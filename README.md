@@ -9,7 +9,7 @@ Este es un proyecto para demostrar el uso de la herramienta Springboot
 ### Clonar el repositorio
 
 ```shell
-git clone https://github.com/ErickEspinozaT/consulti-template-springboot.git
+git clone https://github.com/Proceso-de-Reclutamiento/consulti-template-springboot.git
 ```
 
 ### Instalar paquetes maven

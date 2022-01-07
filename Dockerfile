@@ -1,4 +1,5 @@
 FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
+MAINTAINER erickespinozatorres@gmail.com
 WORKDIR /build/
 
 COPY pom.xml ./

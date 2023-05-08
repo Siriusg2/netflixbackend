@@ -24,4 +24,4 @@ mvn spring-boot:run
 
 El comando `mvn spring-boot:run` arranca la aplicación, observa cambios del código fuente y se accede a traves del puerto `5000`
 
-Para apagar el server manualmente usar `Ctrl+C`
+Para apagar el server manualmente usar `Ctrl+C`.

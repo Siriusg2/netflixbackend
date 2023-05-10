@@ -57,67 +57,90 @@ public class PlanModel {
     }
 
 
-    
-    public PlanModel(int id, String name, LocalDateTime createdDate, LocalDateTime modifiedDate, String createdBy,
-            String modifiedBy) {
+    public PlanModel(int id, String name, int user_id, LocalDateTime createdDate, LocalDateTime modifiedDate,
+            String createdBy, String modifiedBy, List<UsersModel> users) {
+                super();
         this.id = id;
         this.name = name;
+        this.user_id = user_id;
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
         this.createdBy = createdBy;
         this.modifiedBy = modifiedBy;
+        this.users = users;
+    }
+    
+
+    
+    //GETTERS AND SETTERS
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public LocalDateTime getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(LocalDateTime modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
+    public List<UsersModel> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UsersModel> users) {
+        this.users = users;
     }
 
     
     
-//GETTERS AND SETTERS
 
-public int getId() {
-    return id;
-}
-
-public void setId(int id) {
-    this.id = id;
-}
-
-public String getName() {
-    return name;
-}
-
-public void setName(String name) {
-    this.name = name;
-}
-
-public LocalDateTime getCreatedDate() {
-    return createdDate;
-}
-
-public void setCreatedDate(LocalDateTime createdDate) {
-    this.createdDate = createdDate;
-}
-
-public LocalDateTime getModifiedDate() {
-    return modifiedDate;
-}
-
-public void setModifiedDate(LocalDateTime modifiedDate) {
-    this.modifiedDate = modifiedDate;
-}
-
-public String getCreatedBy() {
-    return createdBy;
-}
-
-public void setCreatedBy(String createdBy) {
-    this.createdBy = createdBy;
-}
-
-public String getModifiedBy() {
-    return modifiedBy;
-}
-
-public void setModifiedBy(String modifiedBy) {
-    this.modifiedBy = modifiedBy;
-}
 
 }

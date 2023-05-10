@@ -12,8 +12,7 @@ public class ProfilesModel {
 
     private String name;
 
-    @Column(name="user_id")
-    private int userId;
+   
 
     @Column(name = "created_date")
     private LocalDateTime createdDate;
@@ -41,7 +40,7 @@ public class ProfilesModel {
 
     
     @ManyToOne
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "user_id")
     private UsersModel user;
     
 
@@ -51,8 +50,9 @@ public ProfilesModel() {
   
 }
 
-public ProfilesModel(int id, String name, LocalDateTime createdDate, LocalDateTime modifiedDate, String createdBy,
-        String modifiedBy) {
+  public ProfilesModel(int id, String name, LocalDateTime createdDate, LocalDateTime modifiedDate, String createdBy,
+        String modifiedBy, UsersModel user) {
+
             super();
     this.id = id;
     this.name = name;
@@ -60,60 +60,68 @@ public ProfilesModel(int id, String name, LocalDateTime createdDate, LocalDateTi
     this.modifiedDate = modifiedDate;
     this.createdBy = createdBy;
     this.modifiedBy = modifiedBy;
+    this.user = user;
 }
 
+//GETTERS AND SETTERS
 
-  //GETTERS AND SETTERS
-    public int getId() {
-        return id;
-    }
+public int getId() {
+    return id;
+}
 
+public void setId(int id) {
+    this.id = id;
+}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+public String getName() {
+    return name;
+}
 
-    public String getName() {
-        return name;
-    }
+public void setName(String name) {
+    this.name = name;
+}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+public LocalDateTime getCreatedDate() {
+    return createdDate;
+}
 
-    public String getCreatedBy() {
-        return createdBy;
-    }
+public void setCreatedDate(LocalDateTime createdDate) {
+    this.createdDate = createdDate;
+}
 
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
+public LocalDateTime getModifiedDate() {
+    return modifiedDate;
+}
 
-    public String getModifiedBy() {
-        return modifiedBy;
-    }
+public void setModifiedDate(LocalDateTime modifiedDate) {
+    this.modifiedDate = modifiedDate;
+}
 
-    public void setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
-    }
+public String getCreatedBy() {
+    return createdBy;
+}
 
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
-    }
+public void setCreatedBy(String createdBy) {
+    this.createdBy = createdBy;
+}
 
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
+public String getModifiedBy() {
+    return modifiedBy;
+}
 
-    public LocalDateTime getModifiedDate() {
-        return modifiedDate;
-    }
+public void setModifiedBy(String modifiedBy) {
+    this.modifiedBy = modifiedBy;
+}
 
-    public void setModifiedDate(LocalDateTime modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
+public UsersModel getUser() {
+    return user;
+}
+
+public void setUser(UsersModel user) {
+    this.user = user;
+}
+
     
-
   
     
 

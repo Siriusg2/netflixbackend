@@ -46,7 +46,10 @@ public class UsersModel {
 
     //RELATIONSHIPS
     @OneToMany(mappedBy = "user")
-    private List<ProfilesModel> profiles;
+    private List<ProfilesModel> profile;
+    
+    @OneToMany(mappedBy = "payment")
+    private List<PaymentsModel> payment;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
@@ -56,9 +59,6 @@ public class UsersModel {
     @JoinColumn(name = "plan_id")
     private PlanModel plan;
     
-    @ManyToOne
-    @JoinColumn(name = "payment_id")
-    private PaymentsModel payment;
     
     
     //CONSTRUCTORS
@@ -66,9 +66,12 @@ public class UsersModel {
         public UsersModel() {
          
         }
-        public UsersModel(int id, String email, String password, String date_born, LocalDateTime createdDate,
-                LocalDateTime modifiedDate, String createdBy, String modifiedBy) {
-                    super();
+        
+
+
+    public UsersModel(int id, String email, String password, String date_born, LocalDateTime createdDate,
+                LocalDateTime modifiedDate, String createdBy, String modifiedBy, List<ProfilesModel> profile,
+                List<PaymentsModel> payment, RolesModel role, PlanModel plan) {
             this.id = id;
             this.email = email;
             this.password = password;
@@ -77,10 +80,16 @@ public class UsersModel {
             this.modifiedDate = modifiedDate;
             this.createdBy = createdBy;
             this.modifiedBy = modifiedBy;
+            this.profile = profile;
+            this.payment = payment;
+            this.role = role;
+            this.plan = plan;
         }
+        
+        //GETTERS AND SETTERS
 
 
-    //GETTERS AND SETTERS
+        
     public int getId() {
         return id;
     }
@@ -113,22 +122,6 @@ public class UsersModel {
         this.date_born = date_born;
     }
 
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public String getModifiedBy() {
-        return modifiedBy;
-    }
-
-    public void setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
-    }
-
     public LocalDateTime getCreatedDate() {
         return createdDate;
     }
@@ -145,7 +138,55 @@ public class UsersModel {
         this.modifiedDate = modifiedDate;
     }
 
+    public String getCreatedBy() {
+        return createdBy;
+    }
 
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
+    public List<ProfilesModel> getProfile() {
+        return profile;
+    }
+
+    public void setProfile(List<ProfilesModel> profile) {
+        this.profile = profile;
+    }
+
+    public List<PaymentsModel> getPayment() {
+        return payment;
+    }
+
+    public void setPayment(List<PaymentsModel> payment) {
+        this.payment = payment;
+    }
+
+    public RolesModel getRole() {
+        return role;
+    }
+
+    public void setRole(RolesModel role) {
+        this.role = role;
+    }
+
+    public PlanModel getPlan() {
+        return plan;
+    }
+
+    public void setPlan(PlanModel plan) {
+        this.plan = plan;
+    }
+
+    
     
     
     

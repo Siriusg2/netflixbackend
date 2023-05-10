@@ -65,67 +65,70 @@ this.createdBy = createdBy;
 this.modifiedBy = modifiedBy;
 this.payment = payment;
 }
+
+//getters and setters
+
+
+public int getId() {
+    return id;
+}
+
+public void setId(int id) {
+    this.id = id;
+}
+
+public String getPeriod() {
+    return period;
+}
+
+public void setPeriod(String period) {
+    this.period = period;
+}
+
+public LocalDateTime getCreatedDate() {
+    return createdDate;
+}
+
+public void setCreatedDate(LocalDateTime createdDate) {
+    this.createdDate = createdDate;
+}
+
+public LocalDateTime getModifiedDate() {
+    return modifiedDate;
+}
+
+public void setModifiedDate(LocalDateTime modifiedDate) {
+    this.modifiedDate = modifiedDate;
+}
+
+public String getCreatedBy() {
+    return createdBy;
+}
+
+public void setCreatedBy(String createdBy) {
+    this.createdBy = createdBy;
+}
+
+public String getModifiedBy() {
+    return modifiedBy;
+}
+
+public void setModifiedBy(String modifiedBy) {
+    this.modifiedBy = modifiedBy;
+}
+
+public PaymentsModel getPayment() {
+    return payment;
+}
+
+public void setPayment(PaymentsModel payment) {
+    this.payment = payment;
+}
     
-    //getters and setters
 
    
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getPeriod() {
-        return period;
-    }
-
-    public void setPeriod(String period) {
-        this.period = period;
-    }
-
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public LocalDateTime getModifiedDate() {
-        return modifiedDate;
-    }
-
-    public void setModifiedDate(LocalDateTime modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public String getModifiedBy() {
-        return modifiedBy;
-    }
-
-    public void setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
-    }
-
-    public PaymentsModel getPayment() {
-        return payment;
-    }
-
-    public void setPayment(PaymentsModel payment) {
-        this.payment = payment;
-    }
-
+    
 
     
 }

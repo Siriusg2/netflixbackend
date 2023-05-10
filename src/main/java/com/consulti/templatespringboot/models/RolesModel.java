@@ -45,7 +45,7 @@ public class RolesModel {
 
     //RELATIONSHIPS
     @OneToMany(mappedBy = "role")
-    private List<UsersModel> users;
+    private List<UsersModel> user;
     
 
 //CONSTRUCTOS 
@@ -53,23 +53,27 @@ public class RolesModel {
 public RolesModel() {
    
 }
-public RolesModel(int id, String name, LocalDateTime createdDate, LocalDateTime modifiedDate, String createdBy,
-        String modifiedBy) {
-            super();
-    this.id = id;
-    this.name = name;
-    this.createdDate = createdDate;
-    this.modifiedDate = modifiedDate;
-    this.createdBy = createdBy;
-    this.modifiedBy = modifiedBy;
-}
 
 
+
+    public RolesModel(int id, String name, LocalDateTime createdDate, LocalDateTime modifiedDate, String createdBy,
+    String modifiedBy, List<UsersModel> user) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+        this.createdBy = createdBy;
+        this.modifiedBy = modifiedBy;
+        this.user = user;
+    }
+    
+
+    
     //GETTERS AND SETTERS
     public int getId() {
         return id;
     }
-
 
     public void setId(int id) {
         this.id = id;
@@ -81,6 +85,22 @@ public RolesModel(int id, String name, LocalDateTime createdDate, LocalDateTime 
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public LocalDateTime getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(LocalDateTime modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 
     public String getCreatedBy() {
@@ -99,20 +119,12 @@ public RolesModel(int id, String name, LocalDateTime createdDate, LocalDateTime 
         this.modifiedBy = modifiedBy;
     }
 
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
+    public List<UsersModel> getUser() {
+        return user;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public LocalDateTime getModifiedDate() {
-        return modifiedDate;
-    }
-
-    public void setModifiedDate(LocalDateTime modifiedDate) {
-        this.modifiedDate = modifiedDate;
+    public void setUser(List<UsersModel> user) {
+        this.user = user;
     }
 
     

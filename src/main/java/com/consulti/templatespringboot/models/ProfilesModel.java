@@ -1,131 +1,39 @@
 package com.consulti.templatespringboot.models;
-import javax.persistence.*;
-import java.time.LocalDateTime;
-import lombok.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.persistence.*;
+import lombok.*;
 
 @Data
 @Entity
-@Table(name= "profiles")
+@Table(name = "profiles")
 public class ProfilesModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name= "profile_id")
-    private int id;
 
-    private String name;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "profile_id", unique = true, updatable = false)
+  private int id;
 
-   
+  private String name;
 
-    @Column(name = "created_date")
-    private LocalDateTime createdDate;
-    
-    @Column(name = "modified_date")
-    private LocalDateTime modifiedDate;
-    
-    @Column(name = "created_by")
-    private String createdBy;
-    
-    @Column(name = "modified_by")
-    private String modifiedBy;
-    
-    @PrePersist
-    protected void onCreate() {
-        createdDate = LocalDateTime.now();
-     
-    }
-    
-    @PreUpdate
-    protected void onUpdate() {
-        modifiedDate = LocalDateTime.now();
-       
-    }
+  @Temporal(TemporalType.TIMESTAMP)
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  @Column(name = "created_date")
+  private java.util.Date createdDate;
 
-    
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private UsersModel user;
-    
+  @Temporal(TemporalType.TIMESTAMP)
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  @Column(name = "modified_date")
+  private java.util.Date modifiedDate;
 
-//CONSTRUCTORS 
+  @Column(name = "created_by")
+  private String createdBy;
 
-public ProfilesModel() {
-  
-}
+  @Column(name = "modified_by")
+  private String modifiedBy;
 
-  public ProfilesModel(int id, String name, LocalDateTime createdDate, LocalDateTime modifiedDate, String createdBy,
-        String modifiedBy, UsersModel user) {
-
-            super();
-    this.id = id;
-    this.name = name;
-    this.createdDate = createdDate;
-    this.modifiedDate = modifiedDate;
-    this.createdBy = createdBy;
-    this.modifiedBy = modifiedBy;
-    this.user = user;
-}
-
-//GETTERS AND SETTERS
-
-public int getId() {
-    return id;
-}
-
-public void setId(int id) {
-    this.id = id;
-}
-
-public String getName() {
-    return name;
-}
-
-public void setName(String name) {
-    this.name = name;
-}
-
-public LocalDateTime getCreatedDate() {
-    return createdDate;
-}
-
-public void setCreatedDate(LocalDateTime createdDate) {
-    this.createdDate = createdDate;
-}
-
-public LocalDateTime getModifiedDate() {
-    return modifiedDate;
-}
-
-public void setModifiedDate(LocalDateTime modifiedDate) {
-    this.modifiedDate = modifiedDate;
-}
-
-public String getCreatedBy() {
-    return createdBy;
-}
-
-public void setCreatedBy(String createdBy) {
-    this.createdBy = createdBy;
-}
-
-public String getModifiedBy() {
-    return modifiedBy;
-}
-
-public void setModifiedBy(String modifiedBy) {
-    this.modifiedBy = modifiedBy;
-}
-
-public UsersModel getUser() {
-    return user;
-}
-
-public void setUser(UsersModel user) {
-    this.user = user;
-}
-
-    
-  
-    
-
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  private UsersModel user;
 }

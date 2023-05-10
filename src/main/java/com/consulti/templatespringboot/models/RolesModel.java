@@ -2,10 +2,10 @@ package com.consulti.templatespringboot.models;
 import java.time.*;
 import java.util.*;
 import javax.persistence.*;
+import lombok.*;
 
 
-
-
+@Data
 @Entity
 @Table(name="roles")
 public class RolesModel {
@@ -33,14 +33,15 @@ public class RolesModel {
     @PrePersist
     protected void onCreate() {
         createdDate = LocalDateTime.now();
-        createdBy = "nombreUsuario"; // Aquí se debe obtener el nombre del usuario que realiza la acción
+      
     }
     
     @PreUpdate
     protected void onUpdate() {
         modifiedDate = LocalDateTime.now();
-        modifiedBy = "nombreUsuario"; // Aquí se debe obtener el nombre del usuario que realiza la acción
+       
     }
+    
 
 
     //RELATIONSHIPS
@@ -50,30 +51,28 @@ public class RolesModel {
 
 //CONSTRUCTOS 
 
-public RolesModel() {
-   
+
+
+public RolesModel(int id, String name, LocalDateTime createdDate, LocalDateTime modifiedDate, String createdBy,
+String modifiedBy, List<UsersModel> user) {
+this.id = id;
+this.name = name;
+this.createdDate = createdDate;
+this.modifiedDate = modifiedDate;
+this.createdBy = createdBy;
+this.modifiedBy = modifiedBy;
+this.user = user;
 }
 
-
-
-    public RolesModel(int id, String name, LocalDateTime createdDate, LocalDateTime modifiedDate, String createdBy,
-    String modifiedBy, List<UsersModel> user) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.createdDate = createdDate;
-        this.modifiedDate = modifiedDate;
-        this.createdBy = createdBy;
-        this.modifiedBy = modifiedBy;
-        this.user = user;
-    }
     
 
     
+
     //GETTERS AND SETTERS
     public int getId() {
         return id;
     }
+
 
     public void setId(int id) {
         this.id = id;

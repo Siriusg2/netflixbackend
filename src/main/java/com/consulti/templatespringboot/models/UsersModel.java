@@ -5,8 +5,10 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 import javax.persistence.*;
+import lombok.*;
 
 
+@Data
 @Entity
 @Table(name= "users")
 public class UsersModel {
@@ -35,13 +37,13 @@ public class UsersModel {
     @PrePersist
     protected void onCreate() {
         createdDate = LocalDateTime.now();
-        createdBy = "nombreUsuario"; // Aquí se debe obtener el nombre del usuario que realiza la acción
+  
     }
     
     @PreUpdate
     protected void onUpdate() {
         modifiedDate = LocalDateTime.now();
-        modifiedBy = "nombreUsuario"; // Aquí se debe obtener el nombre del usuario que realiza la acción
+       
     }
 
     //RELATIONSHIPS

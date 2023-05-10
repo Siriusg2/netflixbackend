@@ -2,9 +2,10 @@ package com.consulti.templatespringboot.models;
 import java.time.LocalDateTime;
 
 import javax.persistence.*;
+import lombok.*;
 
 
-
+@Data
 @Entity
 @Table(name = "payments")
 public class PaymentsModel {
@@ -30,13 +31,13 @@ public class PaymentsModel {
     @PrePersist
     protected void onCreate() {
         createdDate = LocalDateTime.now();
-        createdBy = "nombreUsuario"; // Aquí se debe obtener el nombre del usuario que realiza la acción
+       
     }
     
     @PreUpdate
     protected void onUpdate() {
         modifiedDate = LocalDateTime.now();
-        modifiedBy = "nombreUsuario"; // Aquí se debe obtener el nombre del usuario que realiza la acción
+     
     }
 
     //RELATIONSHIPS

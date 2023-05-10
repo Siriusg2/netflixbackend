@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,11 +15,13 @@ import com.consulti.templatespringboot.models.UsersModel;
 import com.consulti.templatespringboot.repositories.UserRepository;
 
 public class UsersService implements UserRepository{
+@Autowired
+public UserRepository userRepository;
+
 
     @Override
     public List<UsersModel> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+      return userRepository.findAll();
     }
 
     @Override
@@ -109,14 +112,12 @@ public class UsersService implements UserRepository{
 
     @Override
     public <S extends UsersModel> S save(S entity) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+      return userRepository.save(entity);
     }
 
     @Override
     public Optional<UsersModel> findById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+       return userRepository.findById(id);
     }
 
     @Override
@@ -133,8 +134,7 @@ public class UsersService implements UserRepository{
 
     @Override
     public void deleteById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+        userRepository.deleteById(id);
     }
 
     @Override

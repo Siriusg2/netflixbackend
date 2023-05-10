@@ -1,20 +1,20 @@
 package com.consulti.templatespringboot.models;
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
+import javax.persistence.*;
+
+
+
 @Entity
-@Table(name= "profiles")
-public class ProfilesModel {
+@Table(name = "payments")
+public class PaymentsModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name= "profile_id")
+    @Column(name = "payment_id")
     private int id;
 
-    private String name;
-
-    @Column(name="user_id")
-    private int userId;
-
+    private String period;
     @Column(name = "created_date")
     private LocalDateTime createdDate;
     
@@ -39,46 +39,67 @@ public class ProfilesModel {
         modifiedBy = "nombreUsuario"; // Aquí se debe obtener el nombre del usuario que realiza la acción
     }
 
-    
+    //RELATIONSHIPS
+
     @ManyToOne
-    @JoinColumn(name = "user")
-    private UsersModel user;
+    @JoinColumn(name = "user_id")
+    private PaymentsModel payment;
+
+//CONSTRUCTORS
+    public PaymentsModel() {
+
+
+}
+
+
+public PaymentsModel(int id, String period, LocalDateTime createdDate, LocalDateTime modifiedDate, String createdBy,
+String modifiedBy, PaymentsModel payment) {
+
+
+    super();
+this.id = id;
+this.period = period;
+this.createdDate = createdDate;
+this.modifiedDate = modifiedDate;
+this.createdBy = createdBy;
+this.modifiedBy = modifiedBy;
+this.payment = payment;
+}
     
+    //getters and setters
 
-//CONSTRUCTORS 
+   
 
-public ProfilesModel() {
-  
-}
-
-public ProfilesModel(int id, String name, LocalDateTime createdDate, LocalDateTime modifiedDate, String createdBy,
-        String modifiedBy) {
-            super();
-    this.id = id;
-    this.name = name;
-    this.createdDate = createdDate;
-    this.modifiedDate = modifiedDate;
-    this.createdBy = createdBy;
-    this.modifiedBy = modifiedBy;
-}
-
-
-  //GETTERS AND SETTERS
     public int getId() {
         return id;
     }
-
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPeriod() {
+        return period;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPeriod(String period) {
+        this.period = period;
+    }
+
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public LocalDateTime getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(LocalDateTime modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 
     public String getCreatedBy() {
@@ -97,24 +118,14 @@ public ProfilesModel(int id, String name, LocalDateTime createdDate, LocalDateTi
         this.modifiedBy = modifiedBy;
     }
 
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
+    public PaymentsModel getPayment() {
+        return payment;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
+    public void setPayment(PaymentsModel payment) {
+        this.payment = payment;
     }
 
-    public LocalDateTime getModifiedDate() {
-        return modifiedDate;
-    }
 
-    public void setModifiedDate(LocalDateTime modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
     
-
-  
-    
-
 }

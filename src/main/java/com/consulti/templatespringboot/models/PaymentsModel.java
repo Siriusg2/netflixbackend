@@ -3,7 +3,7 @@ package com.consulti.templatespringboot.models;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
-import lombok.*;
+import lombok.Data;
 
 @Data
 @Entity
@@ -13,7 +13,7 @@ public class PaymentsModel {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "payment_id", unique = true, updatable = false)
-  private int id;
+  private Long id;
 
   private String period;
 

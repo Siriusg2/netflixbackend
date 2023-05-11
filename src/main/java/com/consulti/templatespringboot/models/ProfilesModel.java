@@ -13,7 +13,7 @@ public class ProfilesModel {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "profile_id", unique = true, updatable = false)
-  private int id;
+  private Long id;
 
   private String name;
 

@@ -22,6 +22,8 @@ public class UsersModel {
 @Column(name = "user_id", unique = true, updatable = false)
 private Long id;
 
+
+@Column(unique = true)
 private String email;
 private String password;
 private String date_born;

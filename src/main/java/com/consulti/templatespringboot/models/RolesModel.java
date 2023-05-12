@@ -22,7 +22,7 @@ public class RolesModel {
   @Column(name = "role_id", unique = true, updatable = false)
   private Long id;
 
-  @Column(name = "role_name")
+  @Column(name = "role_name", unique = true)
   private String name;
 
   @CreationTimestamp

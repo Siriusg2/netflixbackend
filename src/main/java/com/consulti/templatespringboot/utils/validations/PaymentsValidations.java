@@ -20,25 +20,8 @@ public class PaymentsValidations {
     PaymentRepository   paymentRepository;
 
     public void nullIdValidation (Long idPayment) throws Exception{
-if(idPayment== null ){
-    throw new Exception("Se debe ingresar el id del usuario");
-}
+
+        
     }
-//     public void newPaymentValidation (PaymentsModel newPayment) throws Exception{
-//         PaymentsModel objNull = new PaymentsModel();
-//         PaymentsModel request =  newPayment;
-
-//         String creator = newPayment.getCreatedBy();
-//         UsersModel user = newPayment.getUser();
-     
-
-// if(newPayment== objNull ){
-//     throw new Exception("Debes ingresar los datos del pago");
-// }
-
-// if(creator==null){
-
-// }
-//     }
     
 }

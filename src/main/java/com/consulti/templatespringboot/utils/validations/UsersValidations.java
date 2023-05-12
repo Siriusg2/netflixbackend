@@ -14,11 +14,14 @@ public class UsersValidations {
 
     public Boolean validationSave (UsersModel newUser) throws Exception{
     
-      
+      UsersModel existingUser = userRepository.findByEmail(newUser.getEmail());
+
         if (newUser.getEmail() == null || newUser.getEmail().isEmpty()) {
             throw new Exception("El campo email no debe estar vacio");
         }
-        
+        if(existingUser.getEmail().equals(newUser.getEmail()) ){
+            throw new Exception("Ya existe una cuenta con ese correo electrónico");
+        }
         if(!newUser.getEmail().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")){
             throw new Exception("El campo email debe tener formato de correo electronico ej: alguien@algo.com");
         }

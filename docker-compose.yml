@@ -1,12 +1,32 @@
-version: '3'
+version: '1'
 
 services:
-  consulti-template-springboot:
-    image: 'consultiec/consulti-template-spring:latest'
-    container_name: consulti-template-springboot
+   app:
+    image: 'netflix_consulti:latest'
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL= jdbc:postgresql://db:5432/netflix
+      - SPRING_DATASOURCE_USERNAME= postgres
+      - SPRING_DATASOURCE_PASSWORD= 123456
+      - SPRING_JPA_HIBERNATE_DDL_AUTO_PASSWORD= update
+      - SPRING_JPA_SHOW_SQL=true
+   
     hostname: 'consulti-template-springboot'
     restart: always
     ports:
-      - '5000:5000'
+      - '5001:5000'
     volumes:
       - ./src/main/resources/application.properties:/usr/app/application.properties
+   db:
+    image: 'postgres:15.1-alpine'
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+    ports:
+        - 5433:5433 
+  

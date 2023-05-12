@@ -20,6 +20,7 @@ public class PaymentsModel {
   @Column(name = "payment_id", unique = true, updatable = false)
   private Long id;
 
+  @Column(unique = true)
   private String period;
   @CreationTimestamp
   @Temporal(TemporalType.TIMESTAMP)

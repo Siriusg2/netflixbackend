@@ -8,7 +8,8 @@ import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import lombok.*;
+import lombok.Data;
+
 
 @Data
 @Entity
@@ -22,6 +23,10 @@ public class ProfilesModel {
   private Long id;
 
   private String name;
+  
+  @Column(name = "is_active")
+  private Boolean isActive = true;
+  
 
   @CreationTimestamp
   @Temporal(TemporalType.TIMESTAMP)

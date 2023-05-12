@@ -21,6 +21,7 @@ public class PlanModel {
   @Column(name = "plan_id", unique = true, updatable = false)
   private Long id;
 
+  @Column(unique =  true)
   private String name;
 
   @Column(name = "user_id")

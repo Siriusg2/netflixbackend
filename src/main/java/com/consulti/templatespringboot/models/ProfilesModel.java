@@ -2,6 +2,7 @@ package com.consulti.templatespringboot.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+
 import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -12,10 +13,11 @@ import lombok.*;
 @Data
 @Entity
 @Table(name = "profiles")
+@SequenceGenerator(name = "profiles_sequence", sequenceName = "profiles_sequence", allocationSize = 1)
 public class ProfilesModel {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profiles_sequence")
   @Column(name = "profile_id", unique = true, updatable = false)
   private Long id;
 

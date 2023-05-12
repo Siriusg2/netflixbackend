@@ -12,10 +12,11 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "payments")
+@SequenceGenerator(name = "payments_sequence", sequenceName = "payments_sequence", allocationSize = 1)
 public class PaymentsModel {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "payments_sequence")
   @Column(name = "payment_id", unique = true, updatable = false)
   private Long id;
 

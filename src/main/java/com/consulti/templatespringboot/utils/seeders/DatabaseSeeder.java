@@ -24,8 +24,8 @@ public class DatabaseSeeder implements ApplicationRunner {
     
     createRoles();
     createPlans();
-    System.out.println("Seeders finished" );
     createUsers();
+    System.out.println("Seeders finished" );
   }
 
   private void createRoles() {
@@ -79,9 +79,9 @@ public class DatabaseSeeder implements ApplicationRunner {
     RolesModel rolAdmin = rolesRepository.findById(1L).get();
     RolesModel rolUser = rolesRepository.findById(2L).get();
 
-    PlanModel planBasic = planRepository.findById(3L).get();
-    PlanModel planIntermediate = planRepository.findById(4L).get();
-    PlanModel planAdvanced = planRepository.findById(5L).get();
+    PlanModel planBasic = planRepository.findById(1L).get();
+    PlanModel planIntermediate = planRepository.findById(2L).get();
+    PlanModel planAdvanced = planRepository.findById(3L).get();
 
     UsersModel user1 = new UsersModel();
     user1.setEmail("user1@example.com");

@@ -16,8 +16,10 @@ public class UsersController {
   private UsersService usersService;
 
   @GetMapping("/all")
-  public List<UsersModel> getAllUsers() throws Exception {
-    return usersService.listar();
+  @ResponseBody
+  public ResponseEntity<List<UsersModel>> getAllUsers() throws Exception {
+    List<UsersModel> users = usersService.listar();
+    return ResponseEntity.ok().body(users);
   }
 
   @DeleteMapping("delete/{userId}")

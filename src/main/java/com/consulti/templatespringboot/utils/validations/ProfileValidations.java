@@ -10,4 +10,11 @@ public class ProfileValidations {
     
     @Autowired 
      ProfileRepository  profileRepository;
+
+     
+    public void nullIdValidation (Long idProfile) throws Exception{
+        if(idProfile== null ){
+            throw new Exception("Se debe ingresar el id del usuario");
+        }
+            }
 }

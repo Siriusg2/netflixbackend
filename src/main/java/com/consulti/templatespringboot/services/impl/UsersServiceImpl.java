@@ -30,6 +30,8 @@ public class UsersServiceImpl implements UsersService{
     @Override
     public UsersModel save(UsersModel newUser) throws Exception {
         try {
+          usersValidations.validationSave(
+            newUser);
             return userRepository.save(newUser);
           } catch (Exception e) {
             throw new Exception(

@@ -11,4 +11,10 @@ public class RoleValidations {
 @Autowired
 RoleRepository roleRepository;
 
+
+public void nullIdValidation (Long idRole) throws Exception{
+    if(idRole== null ){
+        throw new Exception("Se debe ingresar el id del usuario");
+    }
+        }
 }

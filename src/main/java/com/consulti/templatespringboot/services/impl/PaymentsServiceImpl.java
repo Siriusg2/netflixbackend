@@ -21,6 +21,7 @@ public class PaymentsServiceImpl implements PaymentsService {
 
   @Override
   public List<PaymentsModel> listar() throws Exception {
+    
       return paymentRepository.findAll();
   }
   

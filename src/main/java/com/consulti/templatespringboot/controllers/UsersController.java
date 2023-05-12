@@ -23,7 +23,13 @@ public class UsersController {
   @DeleteMapping("delete/{userId}")
   public ResponseEntity <Boolean> deleteUser(@PathVariable Long userId) throws Exception {
     
-    return ResponseEntity.status(HttpStatus.OK).body(true);
+
+    
+      return ResponseEntity.status(HttpStatus.OK).body(usersService.delete(userId));
+  
+
+
+   
   }
 
   @PostMapping("/save_user")

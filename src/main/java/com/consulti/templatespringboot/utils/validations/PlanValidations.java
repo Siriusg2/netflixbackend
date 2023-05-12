@@ -9,4 +9,11 @@ import com.consulti.templatespringboot.repositories.PlanRepository;
 public class PlanValidations {
     @Autowired
     PlanRepository   planRepository;
+
+
+    public void nullIdValidation (Long idPlan) throws Exception{
+        if(idPlan== null ){
+            throw new Exception("Se debe ingresar el id del usuario");
+        }
+            }
 }

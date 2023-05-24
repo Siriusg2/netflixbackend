@@ -16,16 +16,16 @@ public class DatabaseSeeder implements ApplicationRunner {
 
   @Autowired
   private PlanRepository planRepository;
+
   @Autowired
   private UserRepository userRepository;
 
   @Override
   public void run(ApplicationArguments args) throws Exception {
-    
     createRoles();
     createPlans();
     createUsers();
-    System.out.println("Seeders finished" );
+    System.out.println("Seeders finished");
   }
 
   private void createRoles() {
@@ -51,6 +51,8 @@ public class DatabaseSeeder implements ApplicationRunner {
     plan1.setName("Basico");
     plan1.setUser_id(1L);
     plan1.setCreatedBy("AdminDB");
+    plan1.setMinorContent("https://api.sampleapis.com/movies/family");
+    plan1.setAdultContent("https://api.sampleapis.com/movies/horror");
 
     plan1.setCreatedDate(new Date());
 
@@ -60,7 +62,8 @@ public class DatabaseSeeder implements ApplicationRunner {
     plan2.setName("Intermedio");
     plan2.setUser_id(1L);
     plan2.setCreatedBy("AdminDB");
-
+    plan2.setMinorContent("https://api.sampleapis.com/movies/family");
+    plan2.setAdultContent("https://api.sampleapis.com/movies/horror");
     plan2.setCreatedDate(new Date());
 
     planRepository.save(plan2);
@@ -69,7 +72,9 @@ public class DatabaseSeeder implements ApplicationRunner {
     plan3.setName("Avanzado");
     plan3.setUser_id(1L);
     plan3.setCreatedBy("AdminDB");
-
+    plan1.setMinorContent("https://api.sampleapis.com/movies/family");
+    plan1.setAdultContent("https://api.sampleapis.com/movies/horror");
+    plan1.setAdvancedContent(" https://api.sampleapis.com/cartoons/cartoons2D");
     plan3.setCreatedDate(new Date());
 
     planRepository.save(plan3);
@@ -86,43 +91,37 @@ public class DatabaseSeeder implements ApplicationRunner {
     UsersModel user1 = new UsersModel();
     user1.setEmail("user1@example.com");
     user1.setPassword("password1");
-    user1.setDate_born("1990-01-01");
+    user1.setDateBorn("1990-01-01");
     user1.setCreatedBy("AdminDB");
     user1.setRole(rolAdmin);
     user1.setPlan(planAdvanced);
     userRepository.save(user1);
 
-
-
     UsersModel user2 = new UsersModel();
     user2.setEmail("user2@example.com");
     user2.setPassword("password2");
-    user2.setDate_born("1990-01-01");
+    user2.setDateBorn("1990-01-01");
     user2.setCreatedBy("AdminDB");
     user2.setRole(rolUser);
     user2.setPlan(planBasic);
     userRepository.save(user2);
 
-
     UsersModel user3 = new UsersModel();
     user3.setEmail("user3@example.com");
     user3.setPassword("password3");
-    user3.setDate_born("1990-01-01");
+    user3.setDateBorn("1990-01-01");
     user3.setCreatedBy("AdminDB");
     user3.setRole(rolUser);
     user3.setPlan(planIntermediate);
     userRepository.save(user3);
 
-
     UsersModel user4 = new UsersModel();
     user4.setEmail("user4@example.com");
     user4.setPassword("password4");
-    user4.setDate_born("1990-01-01");
+    user4.setDateBorn("1990-01-01");
     user4.setCreatedBy("AdminDB");
     user4.setRole(rolAdmin);
     user4.setPlan(planAdvanced);
     userRepository.save(user4);
-
-    
   }
 }

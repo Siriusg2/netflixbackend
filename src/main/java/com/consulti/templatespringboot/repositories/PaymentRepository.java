@@ -1,13 +1,6 @@
 package com.consulti.templatespringboot.repositories;
 
-
-
+import com.consulti.templatespringboot.models.PaymentsModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-
-import com.consulti.templatespringboot.models.PaymentsModel;
-
-
-public interface PaymentRepository extends JpaRepository<PaymentsModel, Long>{
-   
-}
+public interface PaymentRepository extends JpaRepository<PaymentsModel, Long> {}

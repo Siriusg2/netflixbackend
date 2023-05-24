@@ -27,5 +27,19 @@ public Boolean validateSaveRole (RolesModel newRole) throws Exception{
 
 return true;
 }
+public Boolean validateSaveRolePerUser (RolesModel newRole) throws Exception{
+
+    RolesModel existingRole = roleRepository.findByName(newRole.getName());
+
+    if(existingRole.getName().equals(newRole.getName()) ){
+        throw new Exception("Ya existe un rol con ese nombre");
+}
+    if(newRole.getName().isEmpty() || newRole.getName() == null){
+        throw new Exception("se debe ingresar el nombre del nuevo rol");
+}
+
+
+return true;
+}
 
 }

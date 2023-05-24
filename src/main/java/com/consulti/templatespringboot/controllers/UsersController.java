@@ -3,6 +3,7 @@ package com.consulti.templatespringboot.controllers;
 import com.consulti.templatespringboot.models.UsersModel;
 import com.consulti.templatespringboot.services.UsersService;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,31 +24,50 @@ public class UsersController {
   }
 
   @DeleteMapping("delete/{userId}")
-  public ResponseEntity <Boolean> deleteUser(@PathVariable Long userId) throws Exception {
-    
-
-    
-      return ResponseEntity.status(HttpStatus.OK).body(usersService.delete(userId));
-  
-
-
-   
+  public ResponseEntity<Boolean> deleteUser(@PathVariable Long userId)
+    throws Exception {
+    return ResponseEntity
+      .status(HttpStatus.OK)
+      .body(usersService.delete(userId));
   }
 
-  @PostMapping("/save_user")
-  public ResponseEntity<UsersModel> saveUser(@RequestBody UsersModel usersModel) throws Exception {
-
-      UsersModel savedUser = usersService.save(usersModel);
-      return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
-   
-  }
-
-  @PutMapping("/update-user")
-  public ResponseEntity<UsersModel> updateUser(
-
-    @RequestBody UsersModel userDetails
+  @PostMapping("/save-user")
+  public ResponseEntity<UsersModel> saveUser(
+    @RequestBody Map<String, String> userData
   ) throws Exception {
-    UsersModel updatedUser = usersService.update( userDetails);
-    return ResponseEntity.ok(updatedUser);
+    String newUserEmail = userData.get("email");
+    String newUserPassword = userData.get("password");
+    String newUserDateBorn = userData.get("dateBorn");
+    String newUserPlan = userData.get("plan");
+    String newUserRole = userData.get("role");
+
+    UsersModel savedUser = usersService.save(
+      newUserEmail,
+      newUserPassword,
+      newUserDateBorn,
+      newUserPlan,
+      newUserRole
+    );
+    return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
+  }
+
+  @PutMapping("/update-user/{userId}")
+  public ResponseEntity<UsersModel> updateUser(
+    @RequestBody Map<String, String> newDataUser,
+    @PathVariable Long userId
+  ) throws Exception {
+    String newUserPassword = newDataUser.get("password");
+    String newUserDateBorn = newDataUser.get("dateBorn");
+    String newUserPlan = newDataUser.get("plan");
+    String newUserRole = newDataUser.get("role");
+
+    UsersModel updatedUser = usersService.update(
+      userId,
+      newUserPassword,
+      newUserDateBorn,
+      newUserPlan,
+      newUserRole
+    );
+    return ResponseEntity.status(HttpStatus.OK).body(updatedUser);
   }
 }

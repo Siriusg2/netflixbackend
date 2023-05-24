@@ -1,24 +1,28 @@
 package com.consulti.templatespringboot.models;
-import java.util.*;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import java.util.*;
 import javax.persistence.*;
-
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
-import lombok.*;
 
 @Data
 @Entity
 @Table(name = "roles")
-@SequenceGenerator(name = "roles_sequence", sequenceName = "roles_sequence", allocationSize = 1)
-
+@SequenceGenerator(
+  name = "roles_sequence",
+  sequenceName = "roles_sequence",
+  allocationSize = 1
+)
 public class RolesModel {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "roles_sequence")
+  @GeneratedValue(
+    strategy = GenerationType.SEQUENCE,
+    generator = "roles_sequence"
+  )
   @Column(name = "role_id", unique = true, updatable = false)
   private Long id;
 
@@ -29,14 +33,13 @@ public class RolesModel {
   @Temporal(TemporalType.TIMESTAMP)
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   @Column(name = "created_date")
-  private java.util.Date createdDate;
-
+  private Date createdDate;
 
   @UpdateTimestamp
   @Temporal(TemporalType.TIMESTAMP)
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   @Column(name = "modified_date")
-  private java.util.Date modifiedDate;
+  private Date modifiedDate;
 
   @Column(name = "created_by")
   private String createdBy;
@@ -48,6 +51,4 @@ public class RolesModel {
   @OneToMany(mappedBy = "role")
   @JsonIgnore
   private List<UsersModel> user;
-
-
 }

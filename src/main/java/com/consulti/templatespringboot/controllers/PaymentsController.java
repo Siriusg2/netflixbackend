@@ -3,8 +3,8 @@ package com.consulti.templatespringboot.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
+
 import org.springframework.web.bind.annotation.*;
 
 import com.consulti.templatespringboot.models.PaymentsModel;
@@ -22,7 +22,7 @@ public class PaymentsController {
       return paymentsService.listar();
     }
   
-    @DeleteMapping("delete/{paymentId}")
+    @DeleteMapping("/delete/{paymentId}")
     public ResponseEntity <Boolean> deleteUser(@PathVariable Long paymentId) throws Exception {
       
       return ResponseEntity.status(HttpStatus.OK).body(true);

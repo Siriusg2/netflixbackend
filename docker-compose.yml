@@ -2,7 +2,7 @@ version: '1'
 
 services:
    app:
-    image: 'netflix_consulti:latest'
+    image: 'netflixconsulti:latest'
     build:
       context: .
     container_name: app
@@ -20,7 +20,7 @@ services:
     ports:
       - '5001:5000'
     volumes:
-      - ./src/main/resources/application.properties:/usr/app/application.properties
+      - ./src/main/resources/application2.properties:/usr/app/application.properties
    db:
     image: 'postgres:15.1-alpine'
     container_name: db

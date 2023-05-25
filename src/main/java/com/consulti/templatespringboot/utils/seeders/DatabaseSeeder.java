@@ -2,7 +2,10 @@ package com.consulti.templatespringboot.utils.seeders;
 
 import com.consulti.templatespringboot.models.*;
 import com.consulti.templatespringboot.repositories.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -20,10 +23,14 @@ public class DatabaseSeeder implements ApplicationRunner {
   @Autowired
   private UserRepository userRepository;
 
+  @Autowired
+  private ContentPlanRepository contentPlanRepository;
+
   @Override
   public void run(ApplicationArguments args) throws Exception {
-    createRoles();
+    createContent();
     createPlans();
+    createRoles();
     createUsers();
     System.out.println("Seeders finished");
   }
@@ -47,13 +54,31 @@ public class DatabaseSeeder implements ApplicationRunner {
   }
 
   private void createPlans() {
+    Optional<ContentPlanModel> kidsContent = contentPlanRepository.findById(1L);
+    Optional<ContentPlanModel> adultContent = contentPlanRepository.findById(
+      2L
+    );
+    Optional<ContentPlanModel> exclusiveContent = contentPlanRepository.findById(
+      3L
+    );
+
+    List<ContentPlanModel> basicAndIntermediateContent = new ArrayList<>();
+
+    basicAndIntermediateContent.add(kidsContent.get());
+    basicAndIntermediateContent.add(adultContent.get());
+
+    List<ContentPlanModel> allContent = new ArrayList<>();
+
+    allContent.add(kidsContent.get());
+    allContent.add(adultContent.get());
+    allContent.add(exclusiveContent.get());
+
     PlanModel plan1 = new PlanModel();
+
     plan1.setName("Basico");
     plan1.setUser_id(1L);
     plan1.setCreatedBy("AdminDB");
-    plan1.setMinorContent("https://api.sampleapis.com/movies/family");
-    plan1.setAdultContent("https://api.sampleapis.com/movies/horror");
-
+    plan1.setContent(basicAndIntermediateContent);
     plan1.setCreatedDate(new Date());
 
     planRepository.save(plan1);
@@ -62,9 +87,9 @@ public class DatabaseSeeder implements ApplicationRunner {
     plan2.setName("Intermedio");
     plan2.setUser_id(1L);
     plan2.setCreatedBy("AdminDB");
-    plan2.setMinorContent("https://api.sampleapis.com/movies/family");
-    plan2.setAdultContent("https://api.sampleapis.com/movies/horror");
+
     plan2.setCreatedDate(new Date());
+    plan2.setContent(basicAndIntermediateContent);
 
     planRepository.save(plan2);
 
@@ -72,9 +97,7 @@ public class DatabaseSeeder implements ApplicationRunner {
     plan3.setName("Avanzado");
     plan3.setUser_id(1L);
     plan3.setCreatedBy("AdminDB");
-    plan1.setMinorContent("https://api.sampleapis.com/movies/family");
-    plan1.setAdultContent("https://api.sampleapis.com/movies/horror");
-    plan1.setAdvancedContent(" https://api.sampleapis.com/cartoons/cartoons2D");
+    plan3.setContent(allContent);
     plan3.setCreatedDate(new Date());
 
     planRepository.save(plan3);
@@ -123,5 +146,30 @@ public class DatabaseSeeder implements ApplicationRunner {
     user4.setRole(rolAdmin);
     user4.setPlan(planAdvanced);
     userRepository.save(user4);
+  }
+
+  public void createContent() throws Exception {
+    ContentPlanModel content1 = new ContentPlanModel();
+
+    content1.setName("Contenido para niños");
+    content1.setExternalEndpoint("https://api.sampleapis.com/movies/family");
+
+    contentPlanRepository.save(content1);
+
+    ContentPlanModel content2 = new ContentPlanModel();
+
+    content2.setName("Contenido para Adultos");
+    content2.setExternalEndpoint("https://api.sampleapis.com/movies/horror");
+
+    contentPlanRepository.save(content2);
+
+    ContentPlanModel content3 = new ContentPlanModel();
+
+    content3.setName("Contenido Exclusivo");
+    content3.setExternalEndpoint(
+      "https://api.sampleapis.com/cartoons/cartoons2D"
+    );
+
+    contentPlanRepository.save(content3);
   }
 }

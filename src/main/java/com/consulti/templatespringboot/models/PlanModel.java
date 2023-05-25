@@ -29,15 +29,6 @@ public class PlanModel {
   @Column(unique = true)
   private String name;
 
-  @Column(name = "minor_content")
-  private String minorContent;
-
-  @Column(name = "adult_content")
-  private String adultContent;
-
-  @Column(name = "advanced_content")
-  private String advancedContent;
-
   @Column(name = "user_id")
   private Long user_id;
 

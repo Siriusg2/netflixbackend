@@ -2,9 +2,9 @@ package com.consulti.templatespringboot.services.impl;
 
 import com.consulti.templatespringboot.models.*;
 import com.consulti.templatespringboot.repositories.PaymentRepository;
+import com.consulti.templatespringboot.repositories.UserRepository;
 import com.consulti.templatespringboot.services.*;
 import com.consulti.templatespringboot.utils.validations.PaymentsValidations;
-
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,19 +17,27 @@ public class PaymentsServiceImpl implements PaymentsService {
   PaymentRepository paymentRepository;
 
   @Autowired
+  UserRepository userRepository;
+
+  @Autowired
   PaymentsValidations paymentsValidations;
 
   @Override
   public List<PaymentsModel> listar() throws Exception {
-    
-      return paymentRepository.findAll();
+    return paymentRepository.findAll();
   }
-  
 
   @Override
-  public PaymentsModel save(PaymentsModel request) throws Exception {
+  public PaymentsModel save(String idUser) throws Exception {
     try {
-      return paymentRepository.save(request);
+      Long id = Long.parseLong(idUser);
+      UsersModel user = userRepository.findById(id).get();
+
+      PaymentsModel newPayment = new PaymentsModel();
+
+      newPayment.setCreatedBy(user.getEmail());
+      newPayment.setUser(user);
+      return paymentRepository.save(newPayment);
     } catch (Exception e) {
       throw new Exception(
         "Error al guardar el registro de pago: " + e.getMessage()
@@ -44,12 +52,12 @@ public class PaymentsServiceImpl implements PaymentsService {
     );
     if (optional.isPresent()) {
       PaymentsModel existingPayment = optional.get();
-      existingPayment.setPeriod(request.getPeriod());
+
       existingPayment.setCreatedDate(request.getCreatedDate());
       existingPayment.setModifiedDate(request.getModifiedDate());
       existingPayment.setCreatedBy(request.getCreatedBy());
       existingPayment.setModifiedBy(request.getModifiedBy());
-      existingPayment.setPayment(request.getPayment());
+      existingPayment.setUser(request.getUser());
       // Guardamos los cambios en la base de datos
       return paymentRepository.save(existingPayment);
     } else {

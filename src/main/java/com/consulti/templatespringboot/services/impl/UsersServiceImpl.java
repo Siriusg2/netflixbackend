@@ -41,6 +41,9 @@ public class UsersServiceImpl implements UsersService {
     String newUserPlan,
     String newUserRole
   ) throws Exception {
+    if (newUserRole == null) {
+      newUserRole = "2";
+    }
     usersValidations.validationSave(
       newUserEmail,
       newUserPassword,

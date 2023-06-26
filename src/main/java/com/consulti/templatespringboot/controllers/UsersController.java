@@ -70,4 +70,16 @@ public class UsersController {
     );
     return ResponseEntity.status(HttpStatus.OK).body(updatedUser);
   }
+
+  @PostMapping("/login")
+  public ResponseEntity<UsersModel> login(
+    @RequestBody Map<String, String> userCredentials
+  ) throws Exception {
+    String userEmail = userCredentials.get("email");
+    String userPassword = userCredentials.get("password");
+
+    UsersModel user = usersService.login(userEmail, userPassword);
+
+    return ResponseEntity.status(HttpStatus.OK).body(user);
+  }
 }

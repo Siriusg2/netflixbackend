@@ -17,7 +17,6 @@ public class ContentPlanServiceImpl implements ContentPlanService {
   @Override
   public ContentPlanModel saveContentPlan(String name, String externalEndpoint)
     throws Exception {
-    // TODO Auto-generated method stub
     throw new UnsupportedOperationException(
       "Unimplemented method 'saveContentPlan'"
     );
@@ -28,7 +27,6 @@ public class ContentPlanServiceImpl implements ContentPlanService {
     String name,
     String externalEndpoint
   ) throws Exception {
-    // TODO Auto-generated method stub
     throw new UnsupportedOperationException(
       "Unimplemented method 'updateContenPlan'"
     );
@@ -36,7 +34,6 @@ public class ContentPlanServiceImpl implements ContentPlanService {
 
   @Override
   public Boolean deleteContentPlan(Long contentPlanId) throws Exception {
-    // TODO Auto-generated method stub
     throw new UnsupportedOperationException(
       "Unimplemented method 'deleteContentPlan'"
     );

@@ -30,6 +30,7 @@ public class UsersModel {
   private String email;
 
   @Column(name = "password", nullable = false)
+  @JsonIgnore
   private String password;
 
   @Column(name = "date_born", nullable = false)
@@ -57,9 +58,9 @@ public class UsersModel {
   @OneToMany(mappedBy = "user")
   private List<ProfilesModel> profiles;
 
-  @OneToMany(mappedBy = "payment")
+  @OneToMany(mappedBy = "user")
   @JsonIgnore
-  private List<PaymentsModel> payment;
+  private List<PaymentsModel> payments;
 
   @ManyToOne
   @JoinColumn(name = "role_id")

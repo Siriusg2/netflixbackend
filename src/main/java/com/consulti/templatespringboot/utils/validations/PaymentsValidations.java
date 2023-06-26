@@ -28,7 +28,7 @@ public class PaymentsValidations {
     // Obtener el valor del campo dateAccountCreated como Date
     Date dateAccountCreated = user.getCreatedDate();
 
-    List<PaymentsModel> userPayments = user.getPayment();
+    List<PaymentsModel> userPayments = user.getPayments();
 
     // Convertir Date a LocalDateTime
     LocalDateTime accountCreatedDateTime = LocalDateTime.ofInstant(

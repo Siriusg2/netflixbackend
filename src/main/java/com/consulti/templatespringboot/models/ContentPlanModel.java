@@ -20,6 +20,7 @@ public class ContentPlanModel {
     strategy = GenerationType.SEQUENCE,
     generator = "content_sequence"
   )
+  @JsonIgnore
   @Column(name = "content_id", unique = true, updatable = false)
   private Long id;
 

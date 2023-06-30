@@ -16,8 +16,8 @@ public class PlanController {
   PlanService planService;
 
   @GetMapping("/all")
-  public List<PlanModel> getAllPlan() throws Exception {
-    return planService.listar();
+  public ResponseEntity<List<PlanModel>> getAllPlan() throws Exception {
+    return ResponseEntity.status(HttpStatus.OK).body(planService.listar());
   }
 
   @DeleteMapping("delete/{planId}")

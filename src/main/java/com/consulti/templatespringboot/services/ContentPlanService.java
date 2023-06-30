@@ -1,15 +1,10 @@
 package com.consulti.templatespringboot.services;
 
-import com.consulti.templatespringboot.models.ContentPlanModel;
+import java.util.List;
+import org.springframework.stereotype.Service;
 
+@Service
 public interface ContentPlanService {
-  public ContentPlanModel saveContentPlan(String name, String externalEndpoint)
+  public List<String> getContent(String idAccount, String ageProfile)
     throws Exception;
-
-  public ContentPlanModel updateContenPlan(
-    String name,
-    String externalEndpoint
-  ) throws Exception;
-
-  public Boolean deleteContentPlan(Long contentPlanId) throws Exception;
 }

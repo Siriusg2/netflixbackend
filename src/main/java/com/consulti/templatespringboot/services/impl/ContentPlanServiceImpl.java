@@ -2,40 +2,66 @@ package com.consulti.templatespringboot.services.impl;
 
 import com.consulti.templatespringboot.models.ContentPlanModel;
 import com.consulti.templatespringboot.repositories.ContentPlanRepository;
+import com.consulti.templatespringboot.repositories.ProfileRepository;
+import com.consulti.templatespringboot.repositories.UserRepository;
 import com.consulti.templatespringboot.services.ContentPlanService;
-import com.consulti.templatespringboot.utils.validations.ContentPlanValidations;
+import com.consulti.templatespringboot.services.GetContentService;
+import com.consulti.templatespringboot.utils.validations.UsersValidations;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ContentPlanServiceImpl implements ContentPlanService {
 
   @Autowired
   ContentPlanRepository contentPlanRepository;
 
   @Autowired
-  ContentPlanValidations contentPlanValidations;
+  UsersValidations usersValidations;
+
+  @Autowired
+  UserRepository userRepository;
+
+  @Autowired
+  GetContentService getContentService;
+
+  @Autowired
+  ProfileRepository profileRepository;
 
   @Override
-  public ContentPlanModel saveContentPlan(String name, String externalEndpoint)
+  public List<String> getContent(String idAccount, String idProfile)
     throws Exception {
-    throw new UnsupportedOperationException(
-      "Unimplemented method 'saveContentPlan'"
-    );
-  }
+    Long parseIdUser = Long.parseLong(idAccount);
+    List<ContentPlanModel> allContent = userRepository
+      .findById(parseIdUser)
+      .get()
+      .getPlan()
+      .getContent();
 
-  @Override
-  public ContentPlanModel updateContenPlan(
-    String name,
-    String externalEndpoint
-  ) throws Exception {
-    throw new UnsupportedOperationException(
-      "Unimplemented method 'updateContenPlan'"
-    );
-  }
+    Long parseIdProfile = Long.parseLong(idProfile);
 
-  @Override
-  public Boolean deleteContentPlan(Long contentPlanId) throws Exception {
-    throw new UnsupportedOperationException(
-      "Unimplemented method 'deleteContentPlan'"
-    );
+    String dateOfBorn = profileRepository
+      .findById(parseIdProfile)
+      .get()
+      .getDateOfBirth();
+
+    Boolean isAdultOrChild = usersValidations.validationAge(dateOfBorn);
+
+    if (!isAdultOrChild) {
+      allContent =
+        allContent
+          .stream()
+          .filter(content -> !content.getName().contains("adultos"))
+          .collect(Collectors.toList());
+    }
+
+    List<String> endpoints = allContent
+      .stream()
+      .map(ContentPlanModel::getExternalEndpoint)
+      .collect(Collectors.toList());
+
+    return getContentService.fetchDataFromEndpoints(endpoints);
   }
 }

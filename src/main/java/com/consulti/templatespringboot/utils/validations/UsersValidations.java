@@ -43,6 +43,7 @@ public class UsersValidations {
   public Boolean validationAge(String userDateBorn) throws Exception {
     try {
       String date = userDateBorn;
+      System.out.println(date);
       LocalDate dateBorn = LocalDate.parse(date);
 
       long edad = ChronoUnit.YEARS.between(dateBorn, LocalDate.now());

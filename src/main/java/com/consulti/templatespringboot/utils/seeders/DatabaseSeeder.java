@@ -152,14 +152,18 @@ public class DatabaseSeeder implements ApplicationRunner {
     ContentPlanModel content1 = new ContentPlanModel();
 
     content1.setName("Contenido para niños");
-    content1.setExternalEndpoint("https://api.sampleapis.com/movies/family");
+    content1.setExternalEndpoint(
+      "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=en-US&page=1&sort_by=popularity.desc"
+    );
 
     contentPlanRepository.save(content1);
 
     ContentPlanModel content2 = new ContentPlanModel();
 
     content2.setName("Contenido para Adultos");
-    content2.setExternalEndpoint("https://api.sampleapis.com/movies/horror");
+    content2.setExternalEndpoint(
+      "https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=true&language=en-US&page=2&sort_by=popularity.desc"
+    );
 
     contentPlanRepository.save(content2);
 
@@ -167,7 +171,7 @@ public class DatabaseSeeder implements ApplicationRunner {
 
     content3.setName("Contenido Exclusivo");
     content3.setExternalEndpoint(
-      "https://api.sampleapis.com/cartoons/cartoons2D"
+      "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc"
     );
 
     contentPlanRepository.save(content3);

@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class GetContentService {
 
-  @Value("${authorization.token}")
+  @Value("${authorization.token_NETFLIX}")
   private String authorizationToken;
 
   HttpClient httpClient = HttpClient

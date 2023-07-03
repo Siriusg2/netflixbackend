@@ -12,10 +12,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GetContentService {
+
+  @Value("${authorization.token}")
+  private String authorizationToken;
 
   HttpClient httpClient = HttpClient
     .newBuilder()
@@ -31,10 +35,7 @@ public class GetContentService {
         HttpRequest request = HttpRequest
           .newBuilder()
           .header("accept", "application/json")
-          .header(
-            "Authorization",
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0OWJkMzY5ZWI2MjQzZTRjMjRiZDlmYmMzNTVhOTk0MCIsInN1YiI6IjY0OWVjYTYwYzlkYmY5MDEwN2UxY2Y1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._CrwC8_UAwCQLeMMLpIEPGBxu0TpM5wTmMAzokg6Ty8"
-          )
+          .header("Authorization", authorizationToken)
           .uri(URI.create(endpoint))
           .build();
 

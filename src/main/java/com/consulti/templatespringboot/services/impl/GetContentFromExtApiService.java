@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class GetContentFromExtApiService {
 
-  @Value("${authorization.token_NETFLIX}")
+  @Value("${authorization_token_NETFLIX}")
   private String authorizationToken;
 
   HttpClient httpClient = HttpClient

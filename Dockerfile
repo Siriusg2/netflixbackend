@@ -13,5 +13,6 @@ COPY --from=build /app/target/netflixconsulti.jar netflixconsulti.jar
 ENV DB_URL_NETFLIX=jdbc:postgresql://containers-us-west-31.railway.app:7971/railway
 ENV DB_USERNAME_NETFLIX=postgres
 ENV DB_PASSWORD_NETFLIX=XxQW0e3XFaTjYs6Aq3ve
+EXPOSE 5000
 ENV authorization.token_NETFLIX="Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0OWJkMzY5ZWI2MjQzZTRjMjRiZDlmYmMzNTVhOTk0MCIsInN1YiI6IjY0OWVjYTYwYzlkYmY5MDEwN2UxY2Y1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._CrwC8_UAwCQLeMMLpIEPGBxu0TpM5wTmMAzokg6Ty8"
 CMD ["java", "-jar", "netflixconsulti.jar"]

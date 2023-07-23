@@ -19,6 +19,7 @@ public class ContentController {
 
   @PostMapping("/get")
   public ResponseEntity<List<Object>> getContent(
+    @RequestParam(defaultValue = "1") int page,
     @RequestBody Map<String, String> userData
   ) throws Exception {
     String userId = userData.get("userId");

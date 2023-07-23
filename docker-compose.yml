@@ -1,4 +1,5 @@
 version: '3'
+name: netflixdb_back
 services:
   db:
     image: postgres
@@ -9,6 +10,9 @@ services:
       POSTGRES_DB: netflix
     ports:
       - 5431:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
   app:
     build: .
     restart: always
@@ -21,3 +25,8 @@ services:
       DB_USERNAME_NETFLIX: postgres
       DB_PASSWORD_NETFLIX: 123456
       authorization.token_NETFLIX: eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0OWJkMzY5ZWI2MjQzZTRjMjRiZDlmYmMzNTVhOTk0MCIsInN1YiI6IjY0OWVjYTYwYzlkYmY5MDEwN2UxY2Y1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._CrwC8_UAwCQLeMMLpIEPGBxu0TpM5wTmMAzokg6Ty8
+    # volumes:
+    #   - ./app:/app
+    
+volumes:
+  db-data:

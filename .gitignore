@@ -1,6 +1,5 @@
 # Ignorar el archivo Dockerfile
-Dockerfile
-docker-compose.yml
+
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar

@@ -4,20 +4,19 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class FilmDTo {
+public class SeriesDTO {
 
-  private Boolean adult;
   private String backdropPath;
+  private String firstAirDate;
   private List<Integer> genreIds;
   private int id;
+  private String name;
+  private List<String> originCountry;
   private String originalLanguage;
-  private String originalTitle;
+  private String originalName;
   private String overview;
   private double popularity;
   private String posterPath;
-  private String releaseDate;
-  private String title;
-  private boolean video;
   private double voteAverage;
   private int voteCount;
 }

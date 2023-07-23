@@ -1,7 +1,6 @@
 package com.consulti.templatespringboot.controllers;
 
 import com.consulti.templatespringboot.services.ContentPlanService;
-import com.consulti.templatespringboot.utils.DTO.FilmDTo;
 import java.util.List;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
@@ -19,13 +18,13 @@ public class ContentController {
   }
 
   @PostMapping("/get")
-  public ResponseEntity<List<FilmDTo>> getContent(
+  public ResponseEntity<List<Object>> getContent(
     @RequestBody Map<String, String> userData
   ) throws Exception {
     String userId = userData.get("userId");
     String profileId = userData.get("profileId");
 
-    List<FilmDTo> response = contentPlanService.getContent(userId, profileId);
+    List<Object> response = contentPlanService.getContent(userId, profileId);
 
     return ResponseEntity.status(HttpStatus.OK).body(response);
   }

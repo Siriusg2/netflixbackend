@@ -1,11 +1,10 @@
-FROM eclipse-temurin:11-jdk-jammy
+FROM maven:3.8.4-openjdk-11
 
-WORKDIR /src
+WORKDIR /app
 
-COPY .mvn/ .mvn
+COPY .mvn ./.mvn
 COPY pom.xml ./
-RUN apt-get update && \
-    apt-get install -y maven && \
-    mvn clean install
 COPY src ./src
+RUN mvn clean install
+
 CMD ["mvn", "spring-boot:run"]

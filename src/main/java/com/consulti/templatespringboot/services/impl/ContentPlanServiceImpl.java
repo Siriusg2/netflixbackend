@@ -5,8 +5,6 @@ import com.consulti.templatespringboot.repositories.ContentPlanRepository;
 import com.consulti.templatespringboot.repositories.ProfileRepository;
 import com.consulti.templatespringboot.repositories.UserRepository;
 import com.consulti.templatespringboot.services.ContentPlanService;
-import com.consulti.templatespringboot.services.GetContentService;
-import com.consulti.templatespringboot.utils.DTO.FilmDTo;
 import com.consulti.templatespringboot.utils.validations.UsersValidations;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,13 +24,13 @@ public class ContentPlanServiceImpl implements ContentPlanService {
   UserRepository userRepository;
 
   @Autowired
-  GetContentService getContentService;
+  GetContentFromExtApiService getContentService;
 
   @Autowired
   ProfileRepository profileRepository;
 
   @Override
-  public List<FilmDTo> getContent(String idAccount, String idProfile)
+  public List<Object> getContent(String idAccount, String idProfile)
     throws Exception {
     Long parseIdUser = Long.parseLong(idAccount);
     List<ContentPlanModel> allContent = userRepository
